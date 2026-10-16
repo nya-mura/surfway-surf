@@ -85,79 +85,79 @@ bool patch1 = false;
 //     }
 //     return old_jump(instance);
 // }
-bool (*original_no_front)(void* instance, void* idk);
-bool no_front(void* instance, void* idk) {
-    if (no_dealth) {
-        return false;
-    }
-    return original_no_front(instance, idk);
-}
-bool (*original_no_side)(void* instance, void* idk);
-bool no_side(void* instance, void* idk) {
-    if (no_dealth) {
-        return false;
-    }
-    return original_no_side(instance, idk);
-}
-bool (*original_camera)(void* instance, void* idk);
-bool follow_camera(void* instance, void* idk) {
-    if (instance != NULL) {
-        return true;
-    }
-    return original_camera(instance, idk);
-}
-bool (*old_train)(void* instance);
-bool train(void* instance) {
-    if (stopTrain) {
-        return true;
-    }
-    return old_train(instance);
-}
-float (*original_speed)(void* instance);
-float getMinSpeed(void* instance) {
-    if (speed > 0.0f) {
-        return speed;
-    }
-    return original_speed(instance);
-}
-float (*original_speed1)(void* instance);
-float getMinSpeed1(void* instance) {
-    if (speed1 > 0.0f) {
-        return speed1;
-    }
-    return original_speed1(instance);
-}
-void hack() {
-    void* front_off = Il2CppGetMethodOffset("Assembly-CSharp.dll", "SYBO.RunnerCore.Character", "CharacterMotor", "CheckFrontalImpact", 1);
-    if (IsSafeMethodPtr(front_off)) {
-        DobbyHook(front_off, (void *)no_front, (void**)&original_no_front);
-    }
-
-    void* side_off = Il2CppGetMethodOffset("Assembly-CSharp.dll", "SYBO.RunnerCore.Character", "CharacterMotor", "CheckSideImpact", 1);
-    if (IsSafeMethodPtr(side_off)) {
-        DobbyHook(side_off, (void*)no_side, (void**)&original_no_side);
-    }
-
-    void* camera_off = Il2CppGetMethodOffset("Assembly-CSharp.dll", "SYBO.Subway", "CameraGroundedModifier", "Apply", 1);
-    if (IsSafeMethodPtr(camera_off)) {
-        DobbyHook(camera_off, (void*)follow_camera, (void**)&original_camera);
-    }
-
-    void* stopTrain = Il2CppGetMethodOffset("Assembly-CSharp.dll", "SYBO.Subway", "MovingTrain", "Disable", 0);
-    if (IsSafeMethodPtr(stopTrain)) {
-        DobbyHook(stopTrain, (void*)train, (void**)&old_train);
-    }
-
-    void* minSpeedOff = Il2CppGetMethodOffset("Assembly-CSharp.dll", "SYBO.Subway", "DefaultSpeedController", "get_MinSpeed", 0);
-    if (IsSafeMethodPtr(minSpeedOff)) {
-        DobbyHook(minSpeedOff, (void*)getMinSpeed, (void**)&original_speed);
-    }
-
-    void* minSpeedOff1 = Il2CppGetMethodOffset("Assembly-CSharp.dll", "SYBO.Subway", "DefaultSpeedController", "get_MaxSpeed", 0);
-    if (IsSafeMethodPtr(minSpeedOff1)) {
-        DobbyHook(minSpeedOff1, (void*)getMinSpeed1, (void**)&original_speed1);
-    }
-}
+// bool (*original_no_front)(void* instance, void* idk);
+// bool no_front(void* instance, void* idk) {
+//     if (no_dealth) {
+//         return false;
+//     }
+//     return original_no_front(instance, idk);
+// }
+// bool (*original_no_side)(void* instance, void* idk);
+// bool no_side(void* instance, void* idk) {
+//     if (no_dealth) {
+//         return false;
+//     }
+//     return original_no_side(instance, idk);
+// }
+// bool (*original_camera)(void* instance, void* idk);
+// bool follow_camera(void* instance, void* idk) {
+//     if (instance != NULL) {
+//         return true;
+//     }
+//     return original_camera(instance, idk);
+// }
+// bool (*old_train)(void* instance);
+// bool train(void* instance) {
+//     if (stopTrain) {
+//         return true;
+//     }
+//     return old_train(instance);
+// }
+// float (*original_speed)(void* instance);
+// float getMinSpeed(void* instance) {
+//     if (speed > 0.0f) {
+//         return speed;
+//     }
+//     return original_speed(instance);
+// }
+// float (*original_speed1)(void* instance);
+// float getMinSpeed1(void* instance) {
+//     if (speed1 > 0.0f) {
+//         return speed1;
+//     }
+//     return original_speed1(instance);
+// }
+// void hack() {
+//     void* front_off = Il2CppGetMethodOffset("Assembly-CSharp.dll", "SYBO.RunnerCore.Character", "CharacterMotor", "CheckFrontalImpact", 1);
+//     if (IsSafeMethodPtr(front_off)) {
+//         DobbyHook(front_off, (void *)no_front, (void**)&original_no_front);
+//     }
+//
+//     void* side_off = Il2CppGetMethodOffset("Assembly-CSharp.dll", "SYBO.RunnerCore.Character", "CharacterMotor", "CheckSideImpact", 1);
+//     if (IsSafeMethodPtr(side_off)) {
+//         DobbyHook(side_off, (void*)no_side, (void**)&original_no_side);
+//     }
+//
+//     void* camera_off = Il2CppGetMethodOffset("Assembly-CSharp.dll", "SYBO.Subway", "CameraGroundedModifier", "Apply", 1);
+//     if (IsSafeMethodPtr(camera_off)) {
+//         DobbyHook(camera_off, (void*)follow_camera, (void**)&original_camera);
+//     }
+//
+//     void* stopTrain = Il2CppGetMethodOffset("Assembly-CSharp.dll", "SYBO.Subway", "MovingTrain", "Disable", 0);
+//     if (IsSafeMethodPtr(stopTrain)) {
+//         DobbyHook(stopTrain, (void*)train, (void**)&old_train);
+//     }
+//
+//     void* minSpeedOff = Il2CppGetMethodOffset("Assembly-CSharp.dll", "SYBO.Subway", "DefaultSpeedController", "get_MinSpeed", 0);
+//     if (IsSafeMethodPtr(minSpeedOff)) {
+//         DobbyHook(minSpeedOff, (void*)getMinSpeed, (void**)&original_speed);
+//     }
+//
+//     void* minSpeedOff1 = Il2CppGetMethodOffset("Assembly-CSharp.dll", "SYBO.Subway", "DefaultSpeedController", "get_MaxSpeed", 0);
+//     if (IsSafeMethodPtr(minSpeedOff1)) {
+//         DobbyHook(minSpeedOff1, (void*)getMinSpeed1, (void**)&original_speed1);
+//     }
+// }
 void touch(bool* mouse) {
     ImGuiIO& io = ImGui::GetIO();
     void* touchCountPtr = Il2CppGetMethodOffset("UnityEngine.dll", "UnityEngine", "Input", "get_touchCount", 0);
@@ -243,30 +243,30 @@ EGLBoolean hook_eglSwapBuffer(EGLDisplay dpy, EGLSurface surface) {
         ImGui::Begin("Debug");
         ImGui::Text("Debug Menu");
         ImGui::Text("FPS  %.1f", ImGui::GetIO().Framerate);
-        ImGui::Checkbox("Patch Memory", &patch);
-        ImGui::Checkbox("Patch Shop", &patch1);
-        void* jump_off = Il2CppGetMethodOffset("Assembly-CSharp.dll", "SYBO.RunnerCore.Character", "CharacterMotor", "get_CanJump", 0);
-        void* minSpeedOffset = Il2CppGetMethodOffset("Assembly-CSharp.dll", "SYBO.Subway", "DefaultSpeedController", "get_MinSpeed", 0);
-        void* minSpeedOffset1 = Il2CppGetMethodOffset("Assembly-CSharp.dll", "SYBO.Subway", "DefaultSpeedController", "get_MaxSpeed", 0);
-        ImGui::Text("Lib base address: %p", (void*)base);
-        ImGui::Text("Jump Offset: %p", jump_off);
-        ImGui::Text("Min speed: %p", minSpeedOffset);
-        ImGui::Text("Max speed: %p", minSpeedOffset1);
-        if (patch && IsSafeMethodPtr(jump_off)) {
-            unsigned char bytes[] = {
-                0x20, 0x00, 0x80, 0x52,
-                0xc0, 0x03, 0x5f, 0xd6
-            };
-            patchMemory((uintptr_t)jump_off, bytes, sizeof(bytes));
-        }
-        if (patch1 && IsSafeMethodPtr(minSpeedOffset1)) {
-            unsigned char bytes[] = {
-                0x00, 0x00, 0x80, 0x52,
-                0xc0, 0x03, 0x5f, 0xd6
-            };
-            patchMemory((uintptr_t)minSpeedOffset1, bytes, sizeof(bytes));
-        }
-
+        // ImGui::Checkbox("Patch Memory", &patch);
+        // ImGui::Checkbox("Patch Shop", &patch1);
+        // void* jump_off = Il2CppGetMethodOffset("Assembly-CSharp.dll", "SYBO.RunnerCore.Character", "CharacterMotor", "get_CanJump", 0);
+        // void* minSpeedOffset = Il2CppGetMethodOffset("Assembly-CSharp.dll", "SYBO.Subway", "DefaultSpeedController", "get_MinSpeed", 0);
+        // void* minSpeedOffset1 = Il2CppGetMethodOffset("Assembly-CSharp.dll", "SYBO.Subway", "DefaultSpeedController", "get_MaxSpeed", 0);
+        // ImGui::Text("Lib base address: %p", (void*)base);
+        // ImGui::Text("Jump Offset: %p", jump_off);
+        // ImGui::Text("Min speed: %p", minSpeedOffset);
+        // ImGui::Text("Max speed: %p", minSpeedOffset1);
+        // if (patch && IsSafeMethodPtr(jump_off)) {
+        //     unsigned char bytes[] = {
+        //         0x20, 0x00, 0x80, 0x52,
+        //         0xc0, 0x03, 0x5f, 0xd6
+        //     };
+        //     patchMemory((uintptr_t)jump_off, bytes, sizeof(bytes));
+        // }
+        // if (patch1 && IsSafeMethodPtr(minSpeedOffset1)) {
+        //     unsigned char bytes[] = {
+        //         0x00, 0x00, 0x80, 0x52,
+        //         0xc0, 0x03, 0x5f, 0xd6
+        //     };
+        //     patchMemory((uintptr_t)minSpeedOffset1, bytes, sizeof(bytes));
+        // }
+        //
         ImGui::End();
     }
     ImGui::Render();
